@@ -32,11 +32,13 @@ use Throwable;
         QueueManager $manager,
         Dispatcher $events,
         EntityManager $entityManager,
-        ExceptionHandler $exceptions
+        ExceptionHandler $exceptions,
+        callable $isDownForMaintenance
     ) {
-        parent::__construct($manager, $events, $exceptions);
+        parent::__construct($manager, $events, $exceptions,$isDownForMaintenance);
 
         $this->entityManager = $entityManager;
+        $this->isDownForMaintenance = $isDownForMaintenance;
     }
 
     /**
