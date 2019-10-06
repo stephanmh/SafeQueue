@@ -23,11 +23,12 @@ class WorkCommand extends IlluminateWorkCommand
      * @param Worker $worker
      * @param array  $config
      */
-    public function __construct(Worker $worker, $config)
+    public function __construct(Worker $worker, $config, $cache)
     {
         $this->renameCommandInSignature($config['command_name']);
 
-        parent::__construct($worker);
+        
+        parent::__construct($worker,$cache);
     }
 
     public function renameCommandInSignature($commandName)
